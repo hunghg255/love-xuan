@@ -1,0 +1,314 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+html {
+  font-size: 18px;
+}
+@media (min-width: 900px) {
+  html {
+    font-size: 24px;
+  }
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 300;
+  line-height: 1.45;
+  color: #0f1108;
+}
+
+button {
+  padding: 14px;
+  outline: none;
+  border: none;
+}
+
+h1 {
+  font-size: 2.2rem;
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.15;
+}
+@media (min-width: 900px) {
+  h1 {
+    font-size: 2.488rem;
+  }
+}
+
+h2 {
+  font-size: 1.4rem;
+  margin: 0.5rem 0;
+  line-height: 1.15;
+  font-weight: 200;
+}
+@media (min-width: 900px) {
+  h2 {
+    margin: 1rem 0;
+    font-size: 1.44rem;
+  }
+}
+
+p {
+  margin-top: 0.25rem;
+}
+@media (min-width: 900px) {
+  p {
+    margin-top: 0.5rem;
+  }
+}
+
+a {
+  color: #0f1108;
+  text-decoration: none;
+  border-bottom: currentcolor 1px solid;
+}
+
+.container {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 0 1rem 100px 1rem;
+}
+@media (min-width: 900px) {
+  .container {
+    max-width: 650px;
+    padding: 0 1rem 90px 1rem;
+  }
+}
+
+.app {
+  position: relative;
+  background: #f2e9de;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 2rem);
+  margin: 1rem;
+  overflow: hidden;
+}
+.app--debug .grab-zone {
+  background: rgba(0, 0, 0, 0.15);
+}
+.app--debug .grab-zone__debug {
+  display: block;
+}
+.app--debug .grab-zone__danger {
+  background: rgba(0, 0, 0, 0.15);
+}
+.app--debug .grabber__arm-wrapper {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.grab-zone-wrapper {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translateX(30%) translateY(50%);
+}
+
+.grab-zone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+}
+.grab-zone__danger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+}
+.grab-zone__debug {
+  display: none;
+  position: absolute;
+  width: 300px;
+  top: -100px;
+  font-size: 14px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.grabber {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+.grabber__arm-wrapper {
+  position: absolute;
+  top: -80px;
+  width: 24px;
+  height: 260px;
+}
+.grabber__arm {
+  position: relative;
+  width: 24px;
+  height: 200px;
+  background: #7d9a9e;
+  border-radius: 20px;
+  overflow: visible;
+  transform: translateY(100%);
+  transition: transform 0.2s ease;
+}
+.grabber__hand {
+  display: block;
+  position: absolute;
+  top: -12px;
+  transform: scale(1.4) rotate(-10deg) translateY(100%);
+  transform-origin: bottom center;
+  transition: transform 0.3s ease;
+}
+.grabber__face {
+  position: absolute;
+  width: 75px;
+  height: 84px;
+  right: 5%;
+  transition: transform 0.3s ease;
+}
+.grabber__body {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  width: 110px;
+  height: 95px;
+  border-radius: 50%;
+  background: #7d9a9e;
+  transition: transform 0.3s ease;
+}
+.grabber--waiting .grabber__hand {
+  transform: scale(1.4) rotate(-10deg);
+}
+.grabber--waiting .grabber__arm {
+  transform: translateY(80%);
+}
+.grabber--waiting .grabber__face {
+  transform: translateY(60%);
+}
+.grabber--stalking .grabber__hand {
+  transform: scale(1.4) rotate(-10deg);
+}
+.grabber--stalking .grabber__arm {
+  transform: translateY(70%);
+}
+.grabber--stalking .grabber__face {
+  transform: translateY(10%);
+}
+.grabber--grabbing .grabber__face {
+  transform: translateY(-40%) rotate(10deg);
+}
+.grabber--grabbing .grabber__arm {
+  transform: translateY(0%);
+}
+.grabber--grabbing .grabber__body {
+  transform: translateY(-20%);
+}
+.grabber--grabbing .grabber__hand {
+  transform: scale(1.7) rotate(10deg);
+}
+.grabber--grabbed .grabber__arm {
+  transition: transform 1s ease;
+}
+.grabber--grabbed .grabber__hand {
+  transition: transform 2.5s ease;
+}
+.grabber--grabbed .grabber__face {
+  transform: translateY(70%);
+  transition: transform 1s ease;
+}
+.grabber--grabbed .grabber__body {
+  transform: translateY(50%);
+  transition: transform 1s ease;
+}
+.grabber--extended .grabber__arm {
+  transform: translateY(-20%);
+}
+.grabber--extended .grabber__face {
+  transform: translateY(-60%) rotate(15deg);
+}
+.grabber--extended .grabber__body {
+  transform: translateY(-40%);
+}
+.grabber--shaka .grabber__arm {
+  transform: translateY(50%);
+}
+.grabber--shaka .grabber__hand {
+  transform: scale(2.5) translateY(10%);
+  -webkit-animation: shaka 0.5s infinite alternate forwards;
+          animation: shaka 0.5s infinite alternate forwards;
+  transform-origin: 55% 60%;
+}
+.grabber--shaka .grabber__face {
+  transform: translateY(70%);
+  transition: transform 1s ease;
+}
+.grabber--shaka .grabber__body {
+  transform: translateY(50%);
+  transition: transform 1s ease;
+}
+
+.trap-button {
+  position: absolute;
+  bottom: 80px;
+  right: 70px;
+  min-width: 125px;
+  background: #8ecacc;
+  color: white;
+  border-radius: 5px;
+  padding: 0.4rem 0.5rem;
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.debug-button {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: transparent;
+  padding: 1rem;
+  margin: 1rem;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.5;
+}
+
+@-webkit-keyframes shaka {
+  0% {
+    transform: scale(2.5) translateY(0%) rotate(-20deg);
+  }
+  100% {
+    transform: scale(2.5) translateY(0%) rotate(20deg);
+  }
+}
+
+@keyframes shaka {
+  0% {
+    transform: scale(2.5) translateY(0%) rotate(-20deg);
+  }
+  100% {
+    transform: scale(2.5) translateY(0%) rotate(20deg);
+  }
+}
+.btn__yes {
+  margin-top: 20px;
+  border-radius: 8px;
+  background: pink;
+  color: #000;
+  border: none;
+  transition: 350ms;
+}
+
+.btn__yes:hover {
+  transform: translateY(-5px);
+}
